@@ -1,0 +1,196 @@
+:root{
+  --bg: #070712;
+  --card: rgba(255,255,255,0.04);
+  --muted: rgba(255,255,255,0.85);
+  --accent1: #7b5cff;
+  --accent2: #4be1ac;
+  --grad: linear-gradient(90deg,var(--accent1),var(--accent2));
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-display: "Poppins", sans-serif;
+}
+
+[data-theme="light"]{
+  --bg: #f8fafc;
+  --card: rgba(11,17,32,0.03);
+  --muted: #0b1020;
+  --accent1: #5b21b6;
+  --accent2: #0891b2;
+  --grad: linear-gradient(90deg,var(--accent1),var(--accent2));
+  color-scheme: light;
+}
+
+/* Basics */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:var(--font-sans);background:var(--bg);color:var(--muted);scroll-behavior:smooth}
+a{transition:all .2s ease}
+
+/* Particles layer */
+.particles-bg{position:fixed;inset:0;z-index:0;opacity:0.9;pointer-events:none}
+
+/* Navbar */
+.navbar{background:transparent;z-index:1200;padding:.8rem 1rem;transition:background .25s ease,backdrop-filter .25s ease}
+.navbar.scrolled{backdrop-filter: blur(6px);background:linear-gradient(180deg,rgba(7,7,18,0.55),rgba(7,7,18,0.25))}
+.navbar .navbar-brand{font-family:var(--font-display);letter-spacing:.6px}
+.navbar .nav-link{color:rgba(255,255,255,0.9);margin-left:.25rem;margin-right:.25rem}
+.navbar .nav-link:hover{opacity:.9}
+
+/* Hero */
+#home{position:relative;display:flex;align-items:center;z-index:10;background:linear-gradient(120deg,rgba(0,0,0,0.25),transparent)}
+.eyebrow{letter-spacing:1px;color:rgba(255,255,255,0.75);margin-bottom:0}
+.display-4{font-family:var(--font-display);font-weight:700}
+.subtext{opacity:.9}
+
+/* Light mode hero text */
+[data-theme="light"] #home .eyebrow,
+[data-theme="light"] #home .subtext {
+  color: var(--muted);
+}
+/* =====================
+   3D Animated Logo (Hero)
+===================== */
+.hero-with-logo {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(20,20,40,0.6), transparent 80%);
+}
+
+.logo3d {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  perspective: 600px;
+  transform-style: preserve-3d;
+  animation: float 4s ease-in-out infinite;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid;
+  border-radius: 50%;
+  border-color: var(--accent1) var(--accent2) transparent transparent;
+  animation: spin 4s linear infinite;
+}
+.ring:nth-child(2) {
+  transform: rotateX(60deg);
+  border-color: var(--accent2) transparent var(--accent1) transparent;
+  animation-delay: 1s;
+}
+.ring:nth-child(3) {
+  transform: rotateY(60deg);
+  border-color: transparent var(--accent2) transparent var(--accent1);
+  animation-delay: 2s;
+}
+.center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background: var(--grad);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 30px rgba(123,92,255,0.6);
+}
+
+@keyframes spin {
+  to { transform: rotateZ(360deg); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Hover rotation effect */
+#logo3d:hover .ring {
+  animation-play-state: paused;
+  transform: rotateX(80deg) rotateY(80deg);
+}
+
+/* Accent text gradient */
+.accent{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+
+/* Cards */
+.card{background:var(--card);border:none;border-radius:var(--radius);}
+.profile-card{overflow:hidden;border-radius:16px;}
+.profile-img{width:100%;height:auto;object-fit:cover;display:block}
+
+/* Projects & hover */
+.project-card{position:relative;transition:transform .35s cubic-bezier(.2,.9,.38,1),box-shadow .35s}
+.project-card:hover{transform:translateY(-8px) scale(1.01)}
+
+/* Dark mode project cards */
+[data-theme="dark"] .project-card .card-title,
+[data-theme="dark"] .project-card .card-text { color: #f0f0f0; }
+
+[data-theme="dark"] .project-card:hover{
+  background: rgba(255,255,255,0.05);
+  box-shadow:
+    0 0 30px -5px rgba(123,92,255,0.25), /* Accent1 glow */
+    0 0 30px -5px rgba(75,225,172,0.2);  /* Accent2 glow */
+}
+[data-theme="dark"] .project-card:hover .card-title { color: #fff; }
+
+/* Light mode hover - with background bloom effect */
+[data-theme="light"] .project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad);
+  z-index: -1;
+  border-radius: var(--radius);
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(.2,.9,.38,1), opacity 0.4s ease;
+}
+[data-theme="light"] .project-card:hover{box-shadow:0 25px 50px -12px rgba(0,0,0,0.15)}
+[data-theme="light"] .project-card:hover::before{transform:scale(1);opacity:1}
+
+/* Dark mode specific text colors */
+[data-theme="dark"] #skills .text-muted {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-theme="dark"] #projects .text-muted {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+
+.btn-primary{background:var(--grad);border:none;box-shadow:0 10px 30px rgba(123,92,255,0.12)}
+
+/* Section backgrounds */
+#skills, #projects { background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); }
+
+/* Skill bars */
+.skill .progress{height:12px;background:rgba(255,255,255,0.08);border-radius:999px;overflow:hidden}
+.progress .progress-bar.bg-gradient{background:#fff;box-shadow:0 0 20px rgba(255,255,255,0.3)}
+
+/* Footer */
+.footer{background:transparent;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted);z-index:10}
+
+/* Utilities */
+.section-title{display:inline-block;padding:10px 18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));font-weight:700}
+.tech-list li{margin:6px 0}
+.link-muted{color:rgba(255,255,255,0.7)}
+.social-icons .btn{border-radius:999px}
+
+/* Images hover */
+img.profile-img{transition:transform .35s ease,filter .35s ease}
+.tilt-card:hover img.profile-img{transform:scale(1.03) rotate(-0.5deg);filter:brightness(1.03) saturate(1.05)}
+
+/* Theme (light mode adjustments) */
+[data-theme="light"] body{color:var(--muted)}
+[data-theme="light"] .navbar .nav-link{color:rgba(11,16,32,0.9)}
+[data-theme="light"] .section-title{background:linear-gradient(180deg,rgba(11,16,32,0.03),rgba(11,16,32,0.02))}
+[data-theme="light"] #skills, [data-theme="light"] #projects {background:rgba(11,17,32,0.03)}
+[data-theme="light"] .skill .progress{background:rgba(11,17,32,0.08)}
+[data-theme="light"] .progress .progress-bar.bg-gradient{background:var(--muted);box-shadow:none}
+[data-theme="light"] #contact{background:var(--bg)}
+[data-theme="light"] .link-muted{color:rgba(11,16,32,0.7)}
+
+/* Responsive */
+@media (min-width:992px){.display-4{font-size:3.6rem}}
+@media (max-width:768px){.profile-card{max-width:360px;margin-inline:auto}}
