@@ -13,13 +13,12 @@
   const stored = localStorage.getItem('theme-mode');
   const applyTheme = (mode) => {
     document.documentElement.setAttribute('data-theme', mode);
-    themeToggle.checked = (mode === 'dark');
-    themeLabel.textContent = (mode === 'dark') ? 'Dark' : 'Light';
+    themeToggle.checked = (mode === 'light');
+    themeLabel.innerHTML = (mode === 'light') ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-stars-fill"></i>';
     localStorage.setItem('theme-mode', mode);
   };
-  if (stored) applyTheme(stored);
-  else applyTheme('dark');
-  themeToggle.addEventListener('change', e => applyTheme(e.target.checked ? 'dark' : 'light'));
+  if (stored) { applyTheme(stored); } else { applyTheme('dark'); }
+  themeToggle.addEventListener('change', e => applyTheme(e.target.checked ? 'light' : 'dark'));
 
   // Lenis smooth scroll
   const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
@@ -63,7 +62,7 @@
   animateSectionChildren('#contact-section');
 
   // Animate skill bars on scroll
-  gsap.utils.toArray('.skill .progress-bar').forEach((bar) => {
+  gsap.utils.toArray('.skill-card .progress-bar').forEach((bar) => {
     const width = bar.style.width || bar.getAttribute('data-width') || '0%';
     gsap.fromTo(bar, { width: '0%' }, {
       width: width,
@@ -167,6 +166,43 @@
     });
   }
 
+  // "See More" skills button
+  const seeMoreSkillsBtn = document.getElementById('seeMoreSkillsBtn');
+  if (seeMoreSkillsBtn) {
+    seeMoreSkillsBtn.addEventListener('click', function() {
+      const hiddenSkills = document.querySelectorAll('.extra-skill');
+      const isShowingMore = this.textContent.includes('More');
+
+      if (isShowingMore) {
+        // Show the skills
+        hiddenSkills.forEach(skill => {
+          // Clear GSAP's inline styles before showing
+          gsap.set(skill, { clearProps: "all" });
+          skill.classList.remove('d-none');
+        });
+
+        // Animate them in
+        gsap.fromTo(hiddenSkills, 
+          { y: 50, opacity: 0 }, 
+          { y: 0, opacity: 1, stagger: 0.15, duration: 0.7, ease: 'power2.out' });
+
+        this.textContent = 'See Less';
+      } else {
+        // Animate skills out
+        gsap.to(hiddenSkills, {
+          y: 50, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power2.in',
+          onComplete: () => {
+            hiddenSkills.forEach(skill => {
+              skill.classList.add('d-none');
+            });
+            lenis.scrollTo('#skills', { offset: -80, duration: 1.5 });
+          }
+        });
+        this.textContent = 'See More';
+      }
+    });
+  }
+
   // Smooth anchor links via Lenis
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
@@ -179,6 +215,25 @@
     });
   });
 
+  // Active nav link on scroll
+  const sections = gsap.utils.toArray('section[id]');
+  const navLinks = gsap.utils.toArray('.navbar-nav .nav-link');
+
+  sections.forEach(section => {
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top center",
+      end: "bottom center",
+      onToggle: self => {
+        if (self.isActive) {
+          const id = section.getAttribute('id');
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = $(`.navbar-nav .nav-link[href="#${id}"]`);
+          if (activeLink) activeLink.classList.add('active');
+        }
+      }
+    });
+  });
 })();
 // Mousemove 3D tilt for logo
 const logo = document.getElementById('logo3d');

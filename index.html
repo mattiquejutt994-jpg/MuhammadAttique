@@ -32,23 +32,25 @@
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand fw-bold accent" href="#">Muhammad Attique</a>
+
+      <!-- Theme Switcher (Moved for mobile view) -->
+      <div class="form-check form-switch theme-switch ms-auto me-3 me-lg-0 ms-lg-3 order-lg-2">
+        <input class="form-check-input" type="checkbox" id="themeToggle" aria-label="Toggle theme">
+        <label class="form-check-label" for="themeToggle" id="themeLabel"><i class="bi bi-moon-stars-fill"></i></label>
+      </div>
+
+     
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-center">
+      <div class="collapse navbar-collapse order-lg-1" id="navMenu">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item ms-3">
-            <div class="form-check form-switch theme-switch">
-              <input class="form-check-input" type="checkbox" id="themeToggle" aria-label="Toggle theme">
-              <label class="form-check-label" for="themeToggle" id="themeLabel">Dark</label>
-            </div>
-          </li>
         </ul>
       </div>
     </div>
@@ -96,7 +98,7 @@
 
         <div class="col-md-7">
           <h2 class="mb-3 section-title">About Me</h2>
-          <p class="lead">I design and build modern front-end interfaces with attention to motion, accessibility, and performance. I use HTML, CSS, JavaScript and animation libraries (GSAP, AOS) to make UI feel alive.</p>
+          <p class="lead">I am Muhammad Attique, I design and build modern front-end interfaces with attention to motion, accessibility, and performance. I use HTML, CSS, JavaScript and animation libraries (GSAP, AOS) to make UI feel alive.</p>
 
           <ul class="list-unstyled tech-list mt-3">
             <li>• Responsive UI (Bootstrap 5)</li>
@@ -122,63 +124,94 @@
       </div>
 
       <div class="row g-4">
-        <div class="col-md-6">
-          <div class="skill">
-            <div class="d-flex justify-content-between">
-              <strong>HTML & CSS</strong><span>95%</span>
+        <!-- Skill 1 -->
+        <div class="col-md-6 col-lg-4">
+          <article class="card project-card skill-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">HTML & CSS</h5>
+              <p class="card-text small">Crafting semantic, accessible markup and modern, responsive layouts with Flexbox, Grid, and custom properties.</p>
+              <div class="d-flex justify-content-between small"><strong>Proficiency</strong><span>95%</span></div>
+              <div class="progress mt-1" style="height: 8px;">
+                <div class="progress-bar bg-gradient" role="progressbar" style="width: 95%" aria-valuenow="95"></div>
+              </div>
             </div>
-            <div class="progress skill-bar">
-              <div class="progress-bar bg-gradient" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="skill mt-3">
-            <div class="d-flex justify-content-between">
-              <strong>JavaScript (Vanilla)</strong><span>90%</span>
-            </div>
-            <div class="progress skill-bar">
-              <div class="progress-bar bg-gradient" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="skill mt-3">
-            <div class="d-flex justify-content-between">
-              <strong>GSAP & Animations</strong><span>88%</span>
-            </div>
-            <div class="progress skill-bar">
-              <div class="progress-bar bg-gradient" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+          </article>
         </div>
 
-        <div class="col-md-6">
-          <div class="skill">
-            <div class="d-flex justify-content-between">
-              <strong>Bootstrap / Responsive</strong><span>94%</span>
+        <!-- Skill 2 -->
+        <div class="col-md-6 col-lg-4">
+          <article class="card project-card skill-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript</h5>
+              <p class="card-text small">Building interactive UI components and logic using modern ES6+ syntax, DOM manipulation, and async operations.</p>
+              <div class="d-flex justify-content-between small"><strong>Proficiency</strong><span>90%</span></div>
+              <div class="progress mt-1" style="height: 8px;">
+                <div class="progress-bar bg-gradient" role="progressbar" style="width: 90%" aria-valuenow="90"></div>
+              </div>
             </div>
-            <div class="progress skill-bar">
-              <div class="progress-bar bg-gradient" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="skill mt-3">
-            <div class="d-flex justify-content-between">
-              <strong>UI/UX & Motion</strong><span>86%</span>
-            </div>
-            <div class="progress skill-bar">
-              <div class="progress-bar bg-gradient" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="skill mt-3">
-            <div class="d-flex justify-content-between">
-              <strong>Three.js / 3D (basic)</strong><span>65%</span>
-            </div>
-            <div class="progress skill-bar">
-              <div class="progress-bar bg-gradient" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+          </article>
         </div>
+
+        <!-- Skill 3 -->
+        <div class="col-md-6 col-lg-4">
+          <article class="card project-card skill-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">GSAP & Animations</h5>
+              <p class="card-text small">Bringing interfaces to life with performant, timeline-based animations and scroll-triggered interactions.</p>
+              <div class="d-flex justify-content-between small"><strong>Proficiency</strong><span>88%</span></div>
+              <div class="progress mt-1" style="height: 8px;">
+                <div class="progress-bar bg-gradient" role="progressbar" style="width: 88%" aria-valuenow="88"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="col-md-6 col-lg-4 d-none extra-skill">
+          <article class="card project-card skill-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Bootstrap / Responsive</h5>
+              <p class="card-text small">Developing mobile-first, responsive websites that look great on all devices using Bootstrap 5 and custom media queries.</p>
+              <div class="d-flex justify-content-between small"><strong>Proficiency</strong><span>94%</span></div>
+              <div class="progress mt-1" style="height: 8px;">
+                <div class="progress-bar bg-gradient" role="progressbar" style="width: 94%" aria-valuenow="94"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Skill 5 -->
+        <div class="col-md-6 col-lg-4 d-none extra-skill">
+          <article class="card project-card skill-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">UI/UX & Motion</h5>
+              <p class="card-text small">Designing intuitive user experiences with a focus on micro-interactions and meaningful motion design.</p>
+              <div class="d-flex justify-content-between small"><strong>Proficiency</strong><span>86%</span></div>
+              <div class="progress mt-1" style="height: 8px;">
+                <div class="progress-bar bg-gradient" role="progressbar" style="width: 86%" aria-valuenow="86"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Skill 6 -->
+        <div class="col-md-6 col-lg-4 d-none extra-skill">
+          <article class="card project-card skill-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Three.js (Basic)</h5>
+              <p class="card-text small">Exploring the world of 3D on the web by creating basic scenes, models, and interactive elements with Three.js.</p>
+              <div class="d-flex justify-content-between small"><strong>Proficiency</strong><span>65%</span></div>
+              <div class="progress mt-1" style="height: 8px;">
+                <div class="progress-bar bg-gradient" role="progressbar" style="width: 65%" aria-valuenow="65"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- See More Skills Button -->
+      <div class="text-center mt-5">
+        <button id="seeMoreSkillsBtn" class="btn btn-outline-primary hvr-wobble-horizontal">See More</button>
       </div>
     </div>
   </section>
@@ -243,25 +276,11 @@ Task Manager Web App is a smart productivity tool that helps users create, organ
         <div class="col-md-6 col-lg-4 d-none extra-project">
           <article class="card project-card h-100 overflow-hidden">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Project Four</h5>
-              <p class="card-text flex-grow-1">A placeholder description for another great project, demonstrating different skills and technologies.</p>
+              <h5 class="card-title">Portfolio</h5>
+              <p class="card-text flex-grow-1">This personal portfolio, the very site you are browsing, was crafted from the ground up. It showcases a modern tech stack including HTML, CSS, and JavaScript, enhanced with GSAP for fluid animations and a fully responsive, dual-theme (light/dark) interface.</p>
               <div class="mt-3 d-flex align-items-center">
-                <a class="btn btn-sm btn-outline-primary" href="#" aria-label="View live">Live</a>
-                <a class="btn btn-sm btn-primary ms-2" href="#" aria-label="View code">Code</a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Project 5 (Initially hidden) -->
-        <div class="col-md-6 col-lg-4 d-none extra-project">
-          <article class="card project-card h-100 overflow-hidden">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Project Five</h5>
-              <p class="card-text flex-grow-1">This project focuses on backend integration and API usage, presented with a clean user interface.</p>
-              <div class="mt-3 d-flex align-items-center">
-                <a class="btn btn-sm btn-outline-primary" href="#" aria-label="View live">Live</a>
-                <a class="btn btn-sm btn-primary ms-2" href="#" aria-label="View code">Code</a>
+                <a class="btn btn-sm btn-outline-primary" href="https://mattiquejutt994-jpg.github.io/M.Attique/" aria-label="View live">Live</a>
+                <a class="btn btn-sm btn-primary ms-2" href="https://github.com/mattiquejutt994-jpg" aria-label="View code">Code</a>
               </div>
             </div>
           </article>
@@ -276,14 +295,14 @@ Task Manager Web App is a smart productivity tool that helps users create, organ
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-5 bg-dark text-white">
+  <section id="contact" class="py-5">
     <div class="container">
       <div class="row gy-4" id="contact-section">
         <div class="col-md-6">
           <h3>Let’s build something</h3>
           <p class="text-muted">Available for freelance and full-time opportunities. Send a message and I’ll reply ASAP.</p>
           <ul class="list-unstyled">
-            <li><i class="bi bi-envelope-fill"></i> <a class="link-light" href="mailto:you@example.com">muhammadattique565@gmail.com</a></li>
+            <li><i class="bi bi-envelope-fill"></i> <a class="contact-link" href="mailto:muhammadattique565@gmail.com">muhammadattique565@gmail.com</a></li>
             <li><i class="bi bi-geo-alt-fill"></i> Lahore, Pakistan</li>
           </ul>
 
@@ -320,18 +339,46 @@ Task Manager Web App is a smart productivity tool that helps users create, organ
 
   <!-- FOOTER -->
   <footer class="py-5 footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
-          <p class="mb-0">© <span id="yr2"></span> <strong>Muhammad Attique</strong> — Crafted with care & animations.</p>
-        </div>
-        <div class="col-md-6 text-md-end text-center">
-          <a class="me-3 link-muted" href="Muhammad_Attique_Resume.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-person"></i> Resume</a>
-          <a class="me-3 link-muted" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
-          <a class="link-muted" href="#"><i class="bi bi-phone"></i> +92 3XX XXXXXXX</a>
-        </div>
+      <div class="container">
+          <div class="row gy-5 gx-lg-5">
+              <!-- Column 1: About -->
+              <div class="col-lg-5 col-md-12">
+                  <h5 class="fw-bold accent mb-3">Muhammad Attique</h5>
+                  <p class="small footer-about-text">A front-end developer passionate about creating modern, animated, and interactive web experiences with a focus on performance and accessibility.</p>
+                  <div class="social-icons mt-3">
+                      <a href="https://github.com/mattiquejutt994-jpg" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm me-2" aria-label="GitHub Profile"><i class="bi bi-github"></i></a>
+                      <a href="https://www.linkedin.com/in/muhammad-attique-051467388" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm me-2" aria-label="LinkedIn Profile"><i class="bi bi-linkedin"></i></a>
+                      <a href="https://www.instagram.com/mattiquejutt" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm" aria-label="Instagram Profile"><i class="bi bi-instagram"></i></a>
+                  </div>
+              </div>
+
+              <!-- Column 2: Menu -->
+              <div class="col-lg-3 col-md-6 col-6">
+                  <h5 class="fw-bold mb-3">Menu</h5>
+                  <ul class="list-unstyled footer-links">
+                      <li><a href="#home">Home</a></li>
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#skills">Skills</a></li>
+                      <li><a href="#projects">Projects</a></li>
+                      <li><a href="Muhammad_Attique_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+                  </ul>
+              </div>
+
+              <!-- Column 3: Contact -->
+              <div class="col-lg-4 col-md-6 col-12">
+                  <h5 class="fw-bold mb-3">Contact</h5>
+                  <ul class="list-unstyled footer-contact-list">
+                      <li><i class="bi bi-envelope-fill"></i> <a href="mailto:muhammadattique565@gmail.com">muhammadattique565@gmail.com</a></li>
+                      <li><i class="bi bi-telephone-fill"></i> <a href="tel:+923213858815">+92 321 3858815</a></li>
+                      <li><i class="bi bi-geo-alt-fill"></i> <span>Lahore, Pakistan</span></li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="footer-bottom">
+              <p class="mb-0 small">© <span id="yr2"></span> Muhammad Attique — Crafted with care & animations.</p>
+          </div>
       </div>
-    </div>
   </footer>
 
   <!-- SCRIPTS: Libraries -->

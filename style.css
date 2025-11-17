@@ -158,18 +158,57 @@ a{transition:all .2s ease}
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
+[data-theme="dark"] #contact .text-muted {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
 
 .btn-primary{background:var(--grad);border:none;box-shadow:0 10px 30px rgba(123,92,255,0.12)}
 
 /* Section backgrounds */
-#skills, #projects { background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); }
+#skills, #projects, #contact { background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); }
+
+/* Contact Section Specifics */
+.contact-link { color: rgba(255,255,255,0.8); text-decoration: none; }
+.contact-link:hover { color: #fff; }
+[data-theme="light"] .contact-link { color: var(--muted); }
+[data-theme="light"] .contact-link:hover { color: var(--accent1); }
 
 /* Skill bars */
-.skill .progress{height:12px;background:rgba(255,255,255,0.08);border-radius:999px;overflow:hidden}
-.progress .progress-bar.bg-gradient{background:#fff;box-shadow:0 0 20px rgba(255,255,255,0.3)}
+.skill-card .progress{background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden;box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);}
+.skill-card .progress-bar.bg-gradient{background:var(--accent1);box-shadow:0 0 12px 1px rgba(123,92,255,0.35)}
 
 /* Footer */
-.footer{background:transparent;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted);z-index:10}
+.footer{background:transparent;border-top:1px solid rgba(255,255,255,0.05);color:var(--muted);z-index:10;position:relative}
+.footer-about-text{color: rgba(255,255,255,0.7);}
+[data-theme="light"] .footer-about-text{color: rgba(11,17,32,0.7);}
+.footer h5{color: #fff;}
+[data-theme="light"] .footer h5{color: var(--muted);}
+.footer-links li{margin-bottom:.75rem}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color .2s ease,padding-left .2s ease;position:relative}
+.footer-links a:hover{color:var(--accent2);padding-left:4px}
+.footer .social-icons .btn{
+  border-color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+}
+.footer .social-icons .btn:hover{
+  background: var(--accent1);
+  border-color: var(--accent1);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.footer-contact-list li{display:flex;align-items:center;margin-bottom:.8rem;color:var(--muted)}
+.footer-contact-list i{margin-right:10px;color:var(--accent1);font-size:1.1rem}
+.footer-contact-list a{color:var(--muted);text-decoration:none}
+.footer-contact-list a:hover{color:var(--accent2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);margin-top:2.5rem;padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.5)}
+[data-theme="light"] .footer-bottom{color:rgba(11,16,32,0.5); border-color: rgba(0,0,0,0.08);}
+[data-theme="light"] .footer .social-icons .btn{border-color:rgba(0,0,0,0.2);color:rgba(0,0,0,0.6)}
+[data-theme="light"] .footer-links a{color:var(--muted)}
+[data-theme="light"] .footer-links a:hover{color:var(--accent1)}
+[data-theme="light"] .footer-contact-list li{color:var(--muted)}
+[data-theme="light"] .footer-contact-list a{color:var(--muted)}
+[data-theme="light"] .footer-contact-list a:hover{color:var(--accent1)}
 
 /* Utilities */
 .section-title{display:inline-block;padding:10px 18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));font-weight:700}
@@ -185,12 +224,96 @@ img.profile-img{transition:transform .35s ease,filter .35s ease}
 [data-theme="light"] body{color:var(--muted)}
 [data-theme="light"] .navbar .nav-link{color:rgba(11,16,32,0.9)}
 [data-theme="light"] .section-title{background:linear-gradient(180deg,rgba(11,16,32,0.03),rgba(11,16,32,0.02))}
-[data-theme="light"] #skills, [data-theme="light"] #projects {background:rgba(11,17,32,0.03)}
-[data-theme="light"] .skill .progress{background:rgba(11,17,32,0.08)}
-[data-theme="light"] .progress .progress-bar.bg-gradient{background:var(--muted);box-shadow:none}
-[data-theme="light"] #contact{background:var(--bg)}
+[data-theme="light"] #skills, [data-theme="light"] #projects, [data-theme="light"] #contact {background:rgba(11,17,32,0.03)}
+[data-theme="light"] .skill-card .progress{background:rgba(11,17,32,0.1); box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);}
+[data-theme="light"] .skill-card .progress-bar.bg-gradient{background:var(--accent1);box-shadow: 0 3px 8px -1px rgba(91, 33, 182, 0.5);}
 [data-theme="light"] .link-muted{color:rgba(11,16,32,0.7)}
 
 /* Responsive */
 @media (min-width:992px){.display-4{font-size:3.6rem}}
 @media (max-width:768px){.profile-card{max-width:360px;margin-inline:auto}}
+
+/* --- Navigation Link Hover & Active Effect --- */
+.navbar-nav .nav-item .nav-link {
+  position: relative;
+  padding-bottom: 0.5rem; /* Line ke liye thori jagah banayein */
+  transition: color 0.3s ease;
+}
+
+/* Active link ka color set karein taake woh dark mode mein nazar aaye */
+.navbar-nav .nav-item .nav-link.active {
+  color: var(--accent1) !important; /* !important Bootstrap ko override karne ke liye */
+  opacity: 1;
+}
+
+/* Neeche wali line ke liye pseudo-element */
+.navbar-nav .nav-item .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent1); /* Aapki accent color variable istemal karega */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+/* Hover karne par line dikhayein */
+.navbar-nav .nav-item .nav-link:hover::after,
+.navbar-nav .nav-item .nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Mobile view mein padding adjust karein */
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-item .nav-link {
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
+    display: inline-block; /* Line ko link ki width tak mehdood rakhein */
+    width: auto;
+  }
+}
+
+/* --- Navbar Toggler Icon Color Fix --- */
+/* Dark Mode (Default) - White Icon */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Light Mode - Dark Icon */
+[data-theme="light"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Remove the default border from the toggler button */
+.navbar-toggler { border-color: transparent !important; }
+
+/* --- Mobile Navigation Dropdown Style --- */
+@media (max-width: 991.98px) {
+  .navbar .navbar-collapse {
+    position: absolute;
+    top: 100%; /* Navbar ke bilkul neeche */
+    right: 1rem; /* Right side se thora gap */
+    width: auto; /* Content ke hisab se width */
+    margin-top: 0.5rem; /* Navbar se thora fasla */
+    
+    /* Dropdown ka background aur style */
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    /* Glass effect (Dark Mode) */
+    background: rgba(15, 20, 40, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Light mode mein dropdown ka style */
+  [data-theme="light"] .navbar .navbar-collapse {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+}
