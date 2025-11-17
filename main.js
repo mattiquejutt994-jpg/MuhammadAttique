@@ -234,6 +234,22 @@
       }
     });
   });
+
+  // Animate footer columns on scroll
+  gsap.utils.toArray('.footer .col-lg-5, .footer .col-lg-3, .footer .col-lg-4').forEach((col, i) => {
+    gsap.from(col, {
+      scrollTrigger: {
+        trigger: col,
+        start: "top 95%", // Animation starts when the top of the column is 95% from the top of the viewport
+        toggleActions: "play none none none",
+      },
+      opacity: 0,
+      y: 50, // Start 50px below final position
+      duration: 0.8,
+      delay: i * 0.2, // Stagger the animation for each column
+      ease: "power3.out",
+    });
+  });
 })();
 // Mousemove 3D tilt for logo
 const logo = document.getElementById('logo3d');
